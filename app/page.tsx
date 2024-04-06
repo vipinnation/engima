@@ -3,17 +3,31 @@ import MainLayout from "@components/layout";
 
 export default function Home() {
   return (
-    <MainLayout>
-      <div className="md:w-9/12 mx-auto">
-        <h2 className="text-2xl font-semibold mb-4 text-center py-4">Latest Blog Posts</h2>
-        <div className="">
-          <BlogCardComponent className="my-3"/>
-          <BlogCardComponent className="my-3"/>
-          <BlogCardComponent className="my-3"/>
-          <BlogCardComponent className="my-3"/>
-       
-        </div>
+    <div className="mx-auto h-full mb-12">
+      <div className="text-center my-8 shadow-md w-full py-8 ">
+        <span className="text-lg leading-none">Welcome To</span>
+        <h1 className="text-[5rem] font-medium">Enigma</h1>
+        <span className="text-lg">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta,
+          molestiae.
+          
+        </span>
       </div>
-    </MainLayout>
+
+      <div className="mx-4 gap-4 grid grid-cols-2">
+        {[...new Array(5)].map((item, index) => (
+          <BlogCardComponent className="my-3" />
+        ))}
+      </div>
+      {/* <h2 className="text-2xl font-semibold mb-4 text-center py-4">
+        Latest Blog Posts
+      </h2>
+      <div className="">
+      
+        <BlogCardComponent className="my-3" />
+        <BlogCardComponent className="my-3" />
+        <BlogCardComponent className="my-3" />
+      </div> */}
+    </div>
   );
 }

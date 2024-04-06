@@ -12,7 +12,7 @@ const BlogCardComponent: React.FC<Props> = ({ className }) => {
       <div className="flex w-full h-full flex-wrap overflow-hidden rounded border-2 shadow-xl">
         <div className="w-2/6">
           <img
-            className="object-cover h-40 w-full"
+            className="object-cover h-40 w-full h-full"
             src="https://images.unsplash.com/photo-1532799755889-1247a1b7f10e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1936&q=80"
           />
         </div>

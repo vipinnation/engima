@@ -3,7 +3,7 @@ import { HiOutlineUserCircle } from "react-icons/hi";
 
 const Navbar = () => {
   return (
-    <div className="sticky top-0">
+    <div className="sticky top-0 z-50">
       <nav className="flex justify-between px-8 py-4 items-center bg-primary ">
         <h1 className="text-xl text-white font-bold ">
           <Link href="/">Enigma</Link>
@@ -29,6 +29,8 @@ const Navbar = () => {
               type="text"
               name="search"
               id="search"
+              autoCorrect="false"
+              autoComplete="false"
               placeholder="Search..."
             />
           </div>
