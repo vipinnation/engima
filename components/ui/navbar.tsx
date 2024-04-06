@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { HiOutlineUserCircle } from "react-icons/hi";
+import { ModeToggle } from "../theme/toggle-theme";
 
 const Navbar = () => {
   return (
     <div className="sticky top-0 z-50">
-      <nav className="flex justify-between px-8 py-4 items-center bg-primary ">
+      <nav className="flex justify-between px-8 py-4 items-center nav-bg dark:bg-black">
         <h1 className="text-xl text-white font-bold ">
           <Link href="/">Enigma</Link>
         </h1>
@@ -40,6 +41,9 @@ const Navbar = () => {
 
             <li className="text-2xl  cursor-pointer">
               <HiOutlineUserCircle />
+            </li>
+            <li className="text-2xl  cursor-pointer">
+              <ModeToggle />
             </li>
           </ul>
         </div>
