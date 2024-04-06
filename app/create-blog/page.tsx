@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { BlockNoteEditor, Block } from "@blocknote/core";
 import { BlockNoteView, useBlockNote } from "@blocknote/react";
 import "../../node_modules/@blocknote/react/dist/style.css";
+import { Button } from "@/components/ui/button";
 type Props = {};
 
 const CreateBlogPage = (props: Props) => {
@@ -53,7 +54,12 @@ const CreateBlogPage = (props: Props) => {
       </div>
 
       <div className="w-1/2 mx-auto">
-        <button className="w-full border rounded-sm text-center py-1.5  bg-black hover:bg-black-400 text-white my-4">Submit</button>
+        <Button
+          type="submit"
+          className="w-full rounded-md my-2 dark:bg-white dark:text-black text-white"
+        >
+          Submit
+        </Button>
       </div>
     </div>
   );

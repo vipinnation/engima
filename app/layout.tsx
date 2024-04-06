@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="dark:bg-primary-dark  ">
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
           <Navbar />
 

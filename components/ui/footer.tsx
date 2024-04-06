@@ -3,11 +3,12 @@ const Footer = () => {
     <div>
       <footer className="bg-primary text-gray-600 text-white px-4 py-2 fixed bottom-0 w-full">
         <div></div>
-        <div className=" flex xs:flex-col justify-between">
+        <div className="flex xs:flex-col justify-between">
           <p>
             <span>&copy;{new Date().getFullYear()} </span>
             <span className="mx-2"> Enigma</span>|
             <span className="mx-2"> All rights reserved</span>|
+            <br className="sm:hidden" />
             <span className="mr-2 ml-2 text-md hover:text-gray-500 cursor-pointer">
               Terms And Conditions
             </span>
@@ -16,7 +17,7 @@ const Footer = () => {
               Privacy Policy
             </span>
           </p>
-          <p>
+          <p className="mt-4 sm:mt-0">
             <span className="mx-2 text-md hover:text-gray-500 cursor-pointer">
               Home
             </span>

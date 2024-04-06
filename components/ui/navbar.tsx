@@ -5,12 +5,12 @@ import { ModeToggle } from "../theme/toggle-theme";
 const Navbar = () => {
   return (
     <div className="sticky top-0 z-50">
-      <nav className="flex justify-between px-8 py-4 items-center nav-bg dark:bg-black">
+      <nav className="flex justify-between px-8 py-4 items-center nav-bg">
         <h1 className="text-xl text-white font-bold ">
           <Link href="/">Enigma</Link>
         </h1>
         <div className="flex items-center">
-          <div className="flex items-center bg-white rounded-lg mx-2">
+          <div className="flex items-center bg-white rounded-md mx-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 pt-0.5 text-gray-600 mx-1"
@@ -26,7 +26,7 @@ const Navbar = () => {
               />
             </svg>
             <input
-              className="ml-2 outline-none bg-transparent font-normal"
+              className="ml-2 outline-none bg-transparent font-normal rouned-md"
               type="text"
               name="search"
               id="search"
