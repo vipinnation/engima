@@ -12,12 +12,12 @@ const Blog = sequelize.define("blog", {
         unique: true
     },
     title: {
-        type: DataType.STRING,
+        type: DataType.TEXT('long'),
         allowNull: false,
-        unique: true
+
     },
     content: {
-        type: DataType.STRING,
+        type: DataType.TEXT('long'),
         allowNull: false
     },
     status: {
@@ -27,7 +27,7 @@ const Blog = sequelize.define("blog", {
     }
 }, {
     timestamps: true,
-    tableName: 'posts'
+    tableName: 'blogs'
 })
 
 export default Blog

@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 
 * {
-  font-family: "Lora", serif;
+  font-family: 'Lora', serif;
 }
 
 .nav-bg {
@@ -14,4 +14,8 @@
   backdrop-filter: blur(11.5px);
   -webkit-backdrop-filter: blur(11.5px);
   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.no-tailwind {
+  all: unset !important;
 }

@@ -1,14 +1,13 @@
-import React from "react";
-import {FaHeart} from 'react-icons/fa'
+import React from 'react';
+import { FaHeart } from 'react-icons/fa';
 type Props = {
   className?: string;
+  blog: any;
 };
 
-const BlogCardComponent: React.FC<Props> = ({ className }) => {
+const BlogCardComponent: React.FC<Props> = ({ className, blog }) => {
   return (
-    <div
-      className={`bg-white rounded-lg shadow-md overflow-hidden flex ${className}`}
-    >
+    <div className={`bg-white rounded-lg shadow-md overflow-hidden flex ${className}`}>
       <div className="flex w-full h-full flex-wrap overflow-hidden rounded border-2 shadow-xl">
         <div className="w-2/6">
           <img
@@ -17,14 +16,11 @@ const BlogCardComponent: React.FC<Props> = ({ className }) => {
           />
         </div>
         <div className="w-4/6 p-2">
-          <h2 className="leading-normal text-lg font-semibold">
-            How To Boost Your Traffic Of Your Blog And Destroy The Competition
-          </h2>
-          <p className="text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis,
-            vitae tempora maxime sunt harum esse officiis suscipit, ratione,
-            sint laudantium obcaecati perferendis dolores!  
-          </p>
+          <h2
+            className="leading-normal text-lg font-semibold"
+            dangerouslySetInnerHTML={{ __html: JSON.parse(blog.title) }}
+          ></h2>
+          <p className="text-sm" dangerouslySetInnerHTML={{ __html: JSON.parse(blog.content) }}></p>
 
           <div className="flex flex-wrap justify-between items-center mt-6">
             <div className="inline-flex items-center">
@@ -32,17 +28,13 @@ const BlogCardComponent: React.FC<Props> = ({ className }) => {
                 <img src="https://randomuser.me/api/portraits/men/5.jpg" />
               </div>
               <div className="flex-1 pl-2">
-                <h2 className=" mb-1">Luke Nunez</h2>
+                <h2 className=" mb-1">Vipin Meghwal</h2>
                 <p className=" opacity-50 text-xs">May 18</p>
               </div>
             </div>
             <span className=" opacity-50 flex">
-              <FaHeart className="text-xl mx-2"/>
-              <svg
-                className="fill-current w-5 h-5"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 459 459"
-              >
+              <FaHeart className="text-xl mx-2" />
+              <svg className="fill-current w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 459 459">
                 <path d="M357 0H102C73.95 0 51 22.95 51 51v408l178.5-76.5L408 459V51c0-28.05-22.95-51-51-51z" />
               </svg>
             </span>
