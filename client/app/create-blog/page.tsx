@@ -7,25 +7,31 @@ import { Button } from "@/components/ui/button";
 type Props = {};
 
 const CreateBlogPage = (props: Props) => {
-  const [blocks, setBlocks] = useState<Array<any> | null>(null);
+  const [content, setContent] = useState<any>([]);
+  const [bodyContent, setBodyContent] = useState<Array<any>>([]);
 
   const editor: BlockNoteEditor | null = useBlockNote({
-    onEditorContentChange: (editor: any) => {
+    onEditorContentChange: async (editor: any) => {
       const blocks = editor.topLevelBlocks;
-      console.log("Content was changed:", blocks);
-      setBlocks(editor.topLevelBlocks);
+      setContent(JSON.stringify(blocks, null, 2));
     },
   });
   const contentEditor: BlockNoteEditor | null = useBlockNote({
     onEditorContentChange: (editor: any) => {
       const blocks = editor.topLevelBlocks;
       console.log("Content was changed:", blocks);
-      setBlocks(editor.topLevelBlocks);
     },
   });
 
+  const onChange = async () => {
+    try {
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <div className="h-full mb-12">
+    <div className="h-full mb-12 dark:text-white">
       <h2 className="text-center text-2xl font-semibold pt-2 pb-3">
         Write a new story
       </h2>
@@ -36,6 +42,7 @@ const CreateBlogPage = (props: Props) => {
             editor={editor}
             className="w-full bg-gray-100 w-full"
             theme={"light"}
+            onChange={onChange}
           />
         </div>
       </div>
@@ -61,8 +68,66 @@ const CreateBlogPage = (props: Props) => {
           Submit
         </Button>
       </div>
+
+      <DataToHTML data={content} />
     </div>
   );
 };
 
 export default CreateBlogPage;
+
+interface Pro {
+  data: string | any[];
+}
+
+const DataToHTML: React.FC<Pro> = ({ data }) => {
+  let jsonData: any[];
+
+  if (Array.isArray(data)) {
+    jsonData = data;
+  } else {
+    try {
+      jsonData = JSON.parse(data);
+    } catch (error) {
+      console.error("Error parsing JSON:", error);
+      return null;
+    }
+  }
+
+  const htmlContent = jsonData.map((item) => {
+    const { id, type, props, content } = item;
+
+    let HeadingTag: keyof JSX.IntrinsicElements = "div";
+    switch (props.level) {
+      case 1:
+        HeadingTag = "h1";
+        break;
+      case 2:
+        HeadingTag = "h2";
+        break;
+      case 3:
+        HeadingTag = "h3";
+        break;
+    }
+
+    const styles: React.CSSProperties = {
+      color: props.textColor,
+      backgroundColor: props.backgroundColor,
+      textAlign: props.textAlignment,
+    };
+
+    return (
+      <div key={id} style={styles}>
+        {type === "heading" && content.length > 0 ? (
+          <HeadingTag>{content[0].text}</HeadingTag>
+        ) : (
+          <p>{content.map((c: any) => c.text).join("")}</p>
+        )}
+      </div>
+    );
+  });
+
+  console.log("HTML Contnet ", htmlContent);
+
+  return <>{htmlContent}</>;
+};
