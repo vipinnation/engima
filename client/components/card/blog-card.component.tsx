@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { FaHeart } from 'react-icons/fa';
 type Props = {
@@ -16,10 +17,11 @@ const BlogCardComponent: React.FC<Props> = ({ className, blog }) => {
           />
         </div>
         <div className="w-4/6 p-2">
-          <h2
+          <Link
+            href={`/blogs/${blog.slug}`}
             className="leading-normal text-lg font-semibold"
             dangerouslySetInnerHTML={{ __html: JSON.parse(blog.title) }}
-          ></h2>
+          ></Link>
           <p className="text-sm" dangerouslySetInnerHTML={{ __html: JSON.parse(blog.content) }}></p>
 
           <div className="flex flex-wrap justify-between items-center mt-6">

@@ -24,6 +24,10 @@ const Blog = sequelize.define("blog", {
         type: DataType.ENUM,
         defaultValue: "active",
         values: ['active', 'inactive']
+    },
+    slug: {
+        type: DataType.STRING,
+        unique: true
     }
 }, {
     timestamps: true,

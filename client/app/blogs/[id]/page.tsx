@@ -13,7 +13,7 @@ const BlogPage = async () => {
     <>
       <div className="px-4 py-6 md:px-6 md:py-12 lg:py-16 mb-12">
         <article className="prose prose-gray max-w-3xl mx-auto space-y-2 dark:prose-invert dark:text-white">
-          <div className="space-y-2 not-prose no-tailwindcss">
+          <div className="space-y-2 not-prose no-tailwindcss remove-all">
             {blog && blog.title ? <div dangerouslySetInnerHTML={{ __html: JSON.parse(blog.title) }} /> : <></>}
             <p className="text-gray-500 dark:text-gray-400">
               Posted on {moment(blog.createdAt).format('MMM DD/YYYY  hh:mm')}
