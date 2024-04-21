@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import { authRoutes } from './auth.routes';
 import { blogRoutes } from './blog.routes';
 
 const routes = express.Router();
@@ -13,6 +14,8 @@ routes.get('/', (req: Request, res: Response) => {
 
 
 routes.use("/blog", blogRoutes)
+
+routes.use("/auth", authRoutes)
 
 
 export = routes;

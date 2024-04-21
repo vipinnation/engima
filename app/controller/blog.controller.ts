@@ -15,6 +15,7 @@ const create = async (req: Request, res: Response) => {
         const lowercaseTitle = titleSubstring.toLowerCase() + `-${crypto.randomBytes(12).toString('hex')}`;
 
         req.body.slug = lowercaseTitle.replace(/ /g, '-');
+        req.body.created_by = req.user.id
 
         const blog = await Blog.create(req.body);
 

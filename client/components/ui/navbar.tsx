@@ -1,8 +1,49 @@
+'use client';
+import { CookieProvider } from '@/utils/cookies.utils';
+import { UserCircle, PackageOpen, Contact2, LogOut, User } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { HiOutlineUserCircle } from 'react-icons/hi';
+import { useSnackbar } from '../alert/alert.component';
 import { ModeToggle } from '../theme/toggle-theme';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger
+} from './dropdown-menu';
 
 const Navbar = () => {
+  const pathname = usePathname();
+  const router = useRouter();
+  const { toastMessage } = useSnackbar();
+  const [token, setToken] = useState<string | null | undefined>();
+
+  useEffect(() => {
+    fetch();
+  }, [token, pathname]);
+
+  const fetch = async () => {
+    try {
+      let token = await CookieProvider.getCookie('token');
+      setToken(token);
+    } catch (error) {}
+  };
+
+  const logout = async () => {
+    try {
+      await CookieProvider.removeCookie('token');
+      await CookieProvider.removeCookie('role');
+      setToken('');
+
+      if (pathname == '/profile') router.push('/login');
+      toastMessage('User logged out successfully', 'success');
+    } catch (error) {}
+  };
+
   return (
     <div className="sticky top-0 z-50">
       <nav className="flex justify-between px-8 py-4 items-center nav-bg">
@@ -40,7 +81,26 @@ const Navbar = () => {
             <li className="font-normal cursor-pointer">Articles</li>
 
             <li className="text-2xl  cursor-pointer">
-              <HiOutlineUserCircle />
+              {token ? (
+                <DropdownMenu>
+                  <DropdownMenuTrigger className="pt-2">
+                    <UserCircle />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-white">
+                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+
+                    <DropdownMenuItem className=" cursor-pointer flex" onClick={logout}>
+                      <LogOut />
+                      <span className="mx-2"> Logout</span>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link href="/login" className="text-2xl  cursor-pointer">
+                  <User />
+                </Link>
+              )}
             </li>
             <li className="text-2xl  cursor-pointer">
               <ModeToggle />

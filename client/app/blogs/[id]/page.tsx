@@ -1,4 +1,3 @@
-'use server';
 import InputField from '@/components/form/input.form';
 import TextAreaField from '@/components/form/text-area.component';
 import { Button } from '@/components/ui/button';

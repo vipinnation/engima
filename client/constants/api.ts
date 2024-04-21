@@ -1,5 +1,6 @@
 const apis = {
-    blog: "/blog"
+    blog: "/blog",
+    login: "/auth/login"
 }
 
 export default apis

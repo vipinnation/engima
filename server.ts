@@ -13,6 +13,15 @@ import db from './db';
 dotenv.config();
 
 
+declare global {
+    namespace Express {
+        interface Request {
+            user: any
+        }
+
+    }
+}
+
 const app: Express = express();
 
 app.use(express.urlencoded({ extended: true }));
